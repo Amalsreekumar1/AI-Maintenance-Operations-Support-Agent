@@ -1,4 +1,3 @@
-
 # AI Support Agent
 
 An end-to-end AI support agent: answers customer questions using RAG, takes real actions

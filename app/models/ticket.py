@@ -12,6 +12,12 @@ class TicketPriority(str, enum.Enum):
     high = "high"
     urgent = "urgent"
 
+class TicketStatus(str, enum.Enum):
+    open = "open"
+    closed = "closed"
+    in_progress = "in_progress"
+    escalated = "escalated" # handed off to a human because the AI/agent couldn't resolve it
+
 
 class Ticket(Base):
     __tablename__ = "tickets"
@@ -19,8 +25,8 @@ class Ticket(Base):
     customer_id = Column(Integer)
     subject = Column(String(250))
     description = Column(String(500))
-    status = Column(String(10), default = "open")
-    priority = Column(String(10))
+    status = Column(Enum(TicketStatus), default = TicketStatus.open)
+    priority = Column(Enum(TicketPriority), default = TicketPriority.medium)
     created = Column(DateTime, default = datetime.utcnow)
     updated = Column(DateTime, default = datetime.utcnow, onupdate = datetime.utcnow)
 
