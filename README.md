@@ -67,7 +67,7 @@ monitoring. Built incrementally — each step is verified working before the nex
   - [X] Service layer: `create_ticket`, `get_customer_tickets`, `update_ticket`
   - [X] Router: `POST /tickets/`, `GET /tickets/{customer_id}`, `PATCH /tickets/{id}` —
     all tested working against MySQL through `/docs`
-  - [ ] `check_ticket` — duplicate-detection helper (check for an existing open ticket
+  - [X] `check_ticket` — duplicate-detection helper (check for an existing open ticket
     on the same issue before creating a new one) — not yet implemented, not blocking
 - [ ] Step 4 — Support dataset (Pandas cleaning, knowledge base prep)
 - [ ] Step 5 — RAG pipeline (chunking, embeddings, FAISS, BM25, RRF, reranker)
@@ -243,7 +243,7 @@ monitoring. Built incrementally — each step is verified working before the nex
 
 - [X] Step 1 — Project skeleton
 - [X] Step 2 — Minimal chatbot backend (FastAPI running, `/` and `/health` verified)
-- [ ] Step 3 — Database + ticket model (MySQL + SQLAlchemy, ticket CRUD)
+- [X] Step 3 — Database + ticket model (MySQL + SQLAlchemy, ticket CRUD)
 - [ ] Step 4 — Support dataset (Pandas cleaning, knowledge base prep)
 - [ ] Step 5 — RAG pipeline (chunking, embeddings, FAISS, BM25, RRF, reranker)
 - [ ] Step 6 — LLM integration (single base LLM wired into `/chat`)
