@@ -3,13 +3,13 @@ from app.models.ticket import Ticket, TicketStatus
 from app.schemas.ticket import TicketCreate, TicketUpdate
 
 
-def create_ticket(customer_id, ticket: TicketCreate, db):
-    existing = check_ticket(customer_id, db, ticket.subject)
+def create_ticket(equipment_id, ticket: TicketCreate, db):
+    existing = check_ticket(equipment_id, db, ticket.subject)
     if existing is not None:
         return existing
     else:
         new_ticket = Ticket(
-        customer_id = customer_id,
+        equipment_id = equipment_id,
         subject = ticket.subject,
         description = ticket.description,
         priority = ticket.priority
@@ -20,8 +20,8 @@ def create_ticket(customer_id, ticket: TicketCreate, db):
         db.refresh(new_ticket)
         return new_ticket
 
-def check_ticket(customer_id, db, subject):
-    ticket = db.query(Ticket).filter(Ticket.customer_id == customer_id).all()
+def check_ticket(equipment_id, db, subject):
+    ticket = db.query(Ticket).filter(Ticket.equipment_id == customer_id).all()
 
     for t in ticket:
         if t.subject == subject and t.status == TicketStatus.open:
@@ -29,8 +29,8 @@ def check_ticket(customer_id, db, subject):
         
     return None
 
-def get_customer_tickets(customer_id, db):
-    return db.query(Ticket).filter(Ticket.customer_id == customer_id).all()
+def get_equipment_tickets(equipment_id, db):
+    return db.query(Ticket).filter(Ticket.equipment_id == equipment_id).all()
 
 def update_ticket(id, db, update: TicketUpdate):
     current_ticket = db.query(Ticket).filter(Ticket.id == id).first()

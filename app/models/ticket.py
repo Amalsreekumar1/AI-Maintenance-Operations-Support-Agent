@@ -22,7 +22,7 @@ class TicketStatus(str, enum.Enum):
 class Ticket(Base):
     __tablename__ = "tickets"
     id = Column(Integer, primary_key=True)
-    customer_id = Column(Integer)
+    equipment_id = Column(Integer)
     subject = Column(String(250))
     description = Column(String(500))
     status = Column(Enum(TicketStatus), default = TicketStatus.open)
